@@ -79,7 +79,10 @@ const getBooksData= async function (req, res) {
     console.log(b)
     res.send({msg: allBooks})
 }
-
-
+// const getBooksInYear = async function (req, res) {
+//     let allBooks = await BookModel find( { year: {$eq: req.body.year }})
+//     res.send({msg: allBooks})
+// }
 module.exports.createBook= createBook
 module.exports.getBooksData= getBooksData
+// module.exports.getBooksInYear= getBooksInYear
