@@ -20,13 +20,13 @@ router.post("/createnewAuthor", authorController.createnewAuthor  )
 //    res.send({msg: specificBook})
 // }
 
- router.put("/newBook/:id",bookController.putreq)
+//  router.put("/newBook",bookController.putreq)
 
  
-
+ router.get("/book",bookController.bookpriceupdate)
  router.post("/createnewBook", bookController.createnewBook  )
 router.post("/createPublisher",publishercontroller.createPublisher)
 //  router.get("/getBooksData", bookController.getBooksData)
  router.get ("/getBooksWithAuthorDetailspublisherdetails",bookController.getBooksWithAuthorDetailspublisherdetails)
-//  router.put("/books",bookController.)
+  router.put("/books",bookController.putreq)
 module.exports = router

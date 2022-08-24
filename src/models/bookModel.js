@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose');   
+
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 const bookSchema = new mongoose.Schema( {
@@ -8,7 +9,8 @@ const bookSchema = new mongoose.Schema( {
     author: {
         type: ObjectId,
         ref: "newauthor"
-    },
+    },IsHardCover:{type:Boolean,
+        default:false},
 	 price : Number,
 		ratings:Number,
         publisher: {

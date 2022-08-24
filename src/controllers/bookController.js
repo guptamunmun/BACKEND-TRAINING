@@ -24,9 +24,25 @@ const publishermodel = require("../models/publishermodel")
     res.send({msg: specificBook})
 }
 const putreq = async function(req,res){
-  let updatebooks = await bookModel.updateOne({_id:req.params.id },{$set:{IsHardCover:Boolean}},{new:true})
+  let data = await publishermodel.find({name:{$in:['Penguin','Harper Collins']}})
+  console.log(data)
+ for(let i =0;i<data.length;i++)
+ {
+ let updatebooks = await bookModel.updateMany({publisher:data[i]._id},
 
-res.send({msg:updatebooks})  }
+  {$set:{IsHardCover:true}},{new:true})
+ 
+ res.send({msg:updatebooks})} 
+}
+  const bookpriceupdate =async function (req,res){
+    
+const auther = await authorModel.find({$gt:{rating:3.5}})
+for(i=0;i<auther.length;i++){
+let updateprice = await bookModel.updateMany({author:auther[i]._id},{$inc:{price:10}},{new:true})
+}
+res.send({msg:updateprice})
+  }
+  
 
 
 // const books= async function (req, res) {
@@ -37,7 +53,7 @@ res.send({msg:updatebooks})  }
 // axios.put(url, content, config).then(response => {
 //     ...
 // });
-
+module.exports.bookpriceupdate=bookpriceupdate
 module.exports.putreq=putreq
  module.exports.createnewBook= createnewBook
 //  module.exports.getBooksData= getBooksData
