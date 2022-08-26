@@ -6,6 +6,6 @@ const authorSchema = new mongoose.Schema( {
     age: Number,
     address: String
 
-}, { timestamps: true });
+}, { timgit s: true });
 
 module.exports = mongoose.model('Author', authorSchema)

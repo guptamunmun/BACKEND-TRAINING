@@ -1,5 +1,4 @@
 const mongoose= require('mongoose');
-const { type } = require('os');
 
 const userSchema= new mongoose.Schema(
 {
@@ -10,7 +9,6 @@ const userSchema= new mongoose.Schema(
 	age: Number,
  	gender: {type:String,
     enum:["male","female","other"]}, // Allowed values are - “male”, “female”, “other”
-	isFreeAppUser: {type:Boolean,
-        default:false} // Default false value.
+	
 },{timestamps:true})
 module.exports = mongoose.model('user1',userSchema)
