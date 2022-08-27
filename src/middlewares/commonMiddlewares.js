@@ -23,8 +23,8 @@ const header = function(req,res,next){
     
     let data = req.body
     data.isfreeappuser=req.headers.isfreeappuser
-    let freeuser = Boolean(data.isfreeappuser)
-    
+    let freeuser = (data.isfreeappuser)
+    console.log(freeuser);
     console.log(data)
     if(!freeuser)
     res.send({msg:"this request is mandatory"})

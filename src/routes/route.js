@@ -15,11 +15,10 @@ router.get("/test-me", function (req, res) {
 
 
 
-// router.post("/createorder",header,ordercontroller.header)
+ router.post("/createorder",commonMW.header,Ordercontroller.createorder)
 // router.post("/createBook", BookController.createBook  )
  router.post("/createproduct",productcontroller.createproduct)
 router.post("/createuser",commonMW.header,UserController.createUser)
-
 
 
 
