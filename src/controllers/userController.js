@@ -11,6 +11,7 @@ const createUser = async function (abcd, xyz) {
   let data = abcd.body;
   let savedData = await userModel.create(data);
   console.log(abcd.newAtribute);
+  console.log(savedData)
   xyz.send({ msg: savedData });
 };
 
@@ -44,6 +45,7 @@ const loginUser = async function (req, res) {
 };
 
 const getUserData = async function (req, res) {
+
   let token = req.headers["x-Auth-token"];
   if (!token) token = req.headers["x-auth-token"];
 
@@ -92,7 +94,21 @@ const updateUser = async function (req, res) {
   res.send({ status: updatedUser, data: updatedUser });
 };
 
+const deleteuser = async function(req,res){
+  let userId = req.params.userId;
+  
+  let token = req.headers["x-Auth-token"];
+  if (!token) token = req.headers["x-auth-token"];
+
+  if (!token) return res.send({ status: false, msg: "token must be present" });
+
+ 
+  let deleteduser = await userModel.findByIdAndUpdate({_id:userId},{$set:{isDeleted:true}},{new:true});
+  console.log(deleteduser)
+  res.send({status:true, msg:deleteduser})
+}
 module.exports.createUser = createUser;
 module.exports.getUserData = getUserData;
 module.exports.updateUser = updateUser;
 module.exports.loginUser = loginUser;
+ module.exports.deleteuser = deleteuser
