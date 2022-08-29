@@ -39,5 +39,7 @@ router.get('/student-details/:name', function(req, res){
 router.post("/createauthor",authorcontrollers.createauthor)
 router.post("/createbook",bookcontrollers.createbooks)
 router.get("/bookbychetanbhagat",bookcontrollers.bookswrittenbychetanbhagat)
+router.get("/updateprice",bookcontrollers.updateprice)
+router.get("/booksfrom50to100",bookcontrollers.booksfrom50to100)
 
 module.exports = router;
