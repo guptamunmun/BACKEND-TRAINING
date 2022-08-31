@@ -43,8 +43,9 @@ router.post("/createBook", BookController.createBook  )
 
 // router.get('/termsAndConditions',  UserController.termsAndConditions)
 // router.get('/register',  UserController.register)
-
-
+router.post("/createuser",UserController.createuser)
+router.post ("/users/:userId",UserController.login)
+router.get("/users/:userId",UserController.getuserdata)
 
 
 
