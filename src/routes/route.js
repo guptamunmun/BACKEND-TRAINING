@@ -41,5 +41,5 @@ router.post("/createbook",bookcontrollers.createbooks)
 router.get("/bookbychetanbhagat",bookcontrollers.bookswrittenbychetanbhagat)
 router.get("/updateprice",bookcontrollers.updateprice)
 router.get("/booksfrom50to100",bookcontrollers.booksfrom50to100)
-
+ 
 module.exports = router;

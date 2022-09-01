@@ -27,9 +27,10 @@ res.send({msg:saveddata})
         console.log(data)
     
         for(i=0;i<data.length;i++){
-const saveddata =  authormodels.find({author_id:data[i].author_id}).select({author_name:1,_id:0})
-      return saveddata  }console.log(saveddata);
-        res.send("dummy")
+            const saveddata =  authormodels.find({author_id:data[i].author_id}).select({author_name:1,_id:0})
+            console.log(saveddata)
+         
+        res.send(saveddata.author_name)}
     }
 
 module.exports.createbooks =createbooks
