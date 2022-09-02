@@ -1,20 +1,50 @@
 const express = require('express');
-const abc = require('../introduction/intro')
+
 const router = express.Router();
+let players =
+   [
+       {
+           "name": "manish",
+           "dob": "1/1/1995",
+           "gender": "male",
+           "city": "jalandhar",
+           "sports": [
+               "swimming"
+           ]
+       },
+       {
+        "name": "gopal",
+        "dob": "1/09/1995",
+        "gender": "male",
+        "city": "delhi",
+        "sports": [
+            "soccer"
+        ],
+    },
+    {
+        "name": "lokesh",
+        "dob": "1/1/1990",
+        "gender": "male",
+        "city": "mumbai",
+        "sports": [
+            "soccer"
+        ],
+    },
+]
 
-router.get('/test-me', function (req, res) {
-    console.log('My batch is', abc.name)
-    abc.printName()
-    res.send('My second ever api!')
-});
-
-
-router.get('/test-you', function(req, res){
-    res.send('This is the second routes implementation')
+router.post('/players', function (req, res) {
+     let data = req.body
+let flag = 0;
+ for (let i=0;i<players.length;i++){
+    if(players[i].name==data.name){flag=1;break;}
+ }
+ if (flag==0){players.push(data);res.send({msg:players})}else{return res.send({msg:"player is already present"})}
 })
 
-router.get('/give-me-students-data',function(req, res){
 
-})
 module.exports = router;
 // adding this comment for no reason
+
+
+
+
