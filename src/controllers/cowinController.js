@@ -94,6 +94,41 @@ const vaccinationcenteres=async function(req,res){
     }
 }
 
+const londonweathr=async function(req,res){
+    try{
+        let options={
+            method:"get",
+            url:`http://api.openweathermap.org/data/2.5/weather?q=London&appid=7d25bcce31875cbed7e2cf579fc87910`  
+        }
+        let result = await axios( options)
+        console.log(result.data)
+        res.status(200).send(result.data.main.temp)   }catch(error){
+        res.status(500).send(error.message)
+    }
+}
+const sortbytemp=async function(req,res){
+    try{
+        let cities =["Bengaluru","Mumbai", "Delhi", "Kolkata", "Chennai", "London", "Moscow"]
+let unsortedcities =[]
+       
+    
+        for (let i=0;i<cities.length;i++){
+            let cityweather={}
+            cityweather.city=cities[i]
+          
+        let result = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${cities[i]}&appid=7d25bcce31875cbed7e2cf579fc87910`)
+        cityweather.temp=result.data.main.temp
+       
+        unsortedcities.push(cityweather)}
+let sortedcities=unsortedcities.sort(function(a,b){
+    return a.temp-b.temp
+})
+ console.log(sortedcities)
+res.status(200).send({msg:sortedcities})}
+    
+    catch(error){
+        res.status(500).send(error.message)
+    }}
  const memepost = async function(req,res){
     try{
    let template_id=req.query.template_id
@@ -119,3 +154,5 @@ module.exports.getByPin = getByPin
 module.exports.getOtp = getOtp
 module.exports.memepost=memepost
 module.exports.vaccinationcenteres=vaccinationcenteres
+module.exports.londonweathr=londonweathr
+module.exports.sortbytemp=sortbytemp
